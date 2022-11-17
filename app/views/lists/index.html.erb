@@ -1,9 +1,38 @@
-<h1>Lists</h1>
+<nav class="navbar navbar-light bg-light">
+  <div></div>
+  <div>
+    <button class="btn btn-outline-success" type="button">My Lists</button>
 
-<ul>
-  <% @lists.each do |list| %>
-    <li><%= link_to list.name, list_path(list) %></li>
-  <% end %>
-</ul>
+      <%= link_to "Create a List",  new_list_path, class: "btn btn-outline-success"%>
+  </div>
+</nav>
 
-<%=link_to "Create a List", new_list_path%>
+<div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <h1 class="display-4">MovieSaver</h1>
+      <p class="lead">List your favourite movies, and save them here..</p>
+    <%= image_tag "img.webp", class:"d-block w-100" %>
+    </div>
+
+  </div>
+</div>
+
+<div class="container py-5">
+  <div class="d-flex align-items-center justify-content-between mb-3">
+    <h3 class="mb-0">My Lists</h3>
+  </div>
+  <div class="row">
+    <% @lists.each do |list| %>
+      <div class="card m-4" style="width: 18rem;">
+        <img class="card-img-top width:100px mt-3" src="https://source.unsplash.com/random/200x200?sig=1">
+        <div class="card-body">
+          <h5 class="card-title"><%=list.name%></h5>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <%= link_to "Go to List",  list_path(list), class: "btn btn-outline-danger"%>
+        </div>
+      </div>
+    <% end %>
+
+  </div>
+</div>
